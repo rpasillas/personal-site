@@ -1,0 +1,36 @@
+
+.nav-primary{
+	//flex: 5;
+}
+
+#menu-primary{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+
+
+	li{
+		padding: 10px 0;
+	}
+
+	a{
+		color: $orange;
+		text-decoration: none;
+		text-align: center;
+		font-size: 20px;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+
+	a[href *= 'me']{
+		color: $blue;
+	}
+
+	a[href *= 'mine']{
+		color: $purple;
+	}
+
+	a[href *= 'blog']{
+		color: $dark-orange;
+	}
+}
