@@ -1,2 +1,42 @@
+$large-desktop: (
+  columns: 12,
+  gutter: 50px,
+  media: "(min-width: 1680px)",
+);
 
+
+$desktop: (
+  columns: 12,
+  gutter: 50px,
+  media: "(min-width: 1366px)",
+);
+
+
+$tablet-landscape: (
+  columns: 12,
+  gutter: 50px,
+  media: "(min-width: 1025px)",
+);
+
+
+$tablet-portrait: (
+  columns: 12,
+  gutter: 50px,
+  media: "(min-width: 769px)",
+);
+
+
+
+$phone-landscape: (
+  columns: 12,
+  gutter: 50px,
+  media: "(min-width: 641px)",
+);
+
+
+$phone-portrait: (
+  columns: 12,
+  gutter: 50px,
+  media: "(min-width: 361px)",
+);
 

@@ -12,8 +12,13 @@ function title() {
     } else {
       return __('Latest Posts', 'sage');
     }
-  } elseif (is_archive()) {
+  } elseif ( is_archive() ) {
+    
+    if( is_post_type_archive('projects') ){
+      return 'Projects: or Ron\'s Greatest Hits';
+    }
     return get_the_archive_title();
+
   } elseif (is_search()) {
     return sprintf(__('Search Results for %s', 'sage'), get_search_query());
   } elseif (is_404()) {

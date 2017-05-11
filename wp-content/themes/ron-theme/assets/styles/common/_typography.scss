@@ -6,7 +6,11 @@
 
 html,
 body{
-	font-size: 16px;
+	font-size: 13px;
+
+	@include grid-media($tablet-portrait) {
+		font-size: 16px;
+	}
 }
 
 h1,
@@ -14,17 +18,98 @@ h2,
 h3,
 h4,
 h5,
-h6{
+h6,
+label,
+input,
+textarea,
+span,
+div{
 	font-family: 'Open Sans', sans-serif;
 }
 
-a:link,
-a:visited{
-	color: $orange;
+a:link{
+	color: $blue;
 	font-family: 'Open Sans', sans-serif;
 }
 
+a:visited,
 a:hover,
 a:active{
 	color: $orange;
+}
+
+/**
+ * LINE HEIGHTS
+ **/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	line-height: 1.2;
+	margin-bottom: 1.5rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6{
+	line-height: 1.4;
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+p,
+ul,
+ol,
+input,
+textarea,
+label{
+	line-height: 2.2;
+	margin-bottom: 2rem;
+
+	@include grid-media($tablet-portrait) {
+		line-height: 1.7;
+	}	
+}
+
+ol{
+	list-style: decimal;
+	margin-left: 1rem;
+}
+
+ul{
+	list-style: disc;
+	margin-left: 1rem;
+}
+
+/**
+ * FONT SIZES
+ **/
+ h1{
+	font-size: 2rem;
+	font-weight: 600;
+	color: $blue;
+ }
+
+ h2{
+	font-size: 1.75rem;
+	font-weight: 600;
+	color: $blue;
+ }
+
+ h3{
+ 	font-size: 1.2rem;
+ 	font-weight: 600;
+ 	color: $blue;
+ }
+
+input,
+textarea,
+label,
+span,
+div{
+	font-size: 1rem;
 }

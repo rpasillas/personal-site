@@ -1,11 +1,26 @@
 header.banner{
-	border-top: 12px solid $orange;
+	border-top: 6px solid $orange;
 	padding-top: 20px;
+	margin-bottom: 2rem;
+	@include grid-container;
 
-	.container{
-		// display: flex;
-		// flex-flow: row wrap;
-		// align-items: flex-end;
+	@include grid-media( $phone-landscape ){
+		border-top: 12px solid $orange;
+	}
+
+	@include grid-media( $tablet-landscape ){
+		margin-bottom: 5rem;
+	}
+	
+
+	.content{	
+
+		@include grid-media( $phone-landscape ){
+			display: flex;
+			flex-flow: row wrap;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
 	}
 
 	a.brand{
@@ -19,15 +34,32 @@ header.banner{
 		padding-top: 60px;
 		text-align: center;
 		text-decoration: none;
-		font-size: 30px;
 		font-weight: 300;
 		margin: 0 auto;
+		
+		span:first-child{
+			font-size: 1.5rem;
+		}
 
 		span:last-child{
-			font-size: 14px;
+			font-size: .875rem;
 			color: $dark-orange;
 			font-weight: 600;
 			text-transform: uppercase;
 		}
+
+		@include grid-media( $phone-landscape ){
+			margin: 0;
+			flex: 0 0 184px;
+			width: 184px;
+			padding-bottom: 8px;
+		}
+	}
+
+	.navs{
+		display: flex;
+		flex-flow: column-reverse nowrap;
+		justify-content: space-between;
+		align-items: flex-end;
 	}
 }

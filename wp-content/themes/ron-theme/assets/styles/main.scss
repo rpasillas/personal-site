@@ -1,19 +1,19 @@
 @import "common/variables";
 @import "neat";
+@import "common/grid";
+
 
 @import "layouts/grid";
 
 @import "common/reset";
 @import "common/normalize";
 @import "common/typography";
-@import "common/grid";
-@import "common/global";
 
+@import "common/global";
 
 @import "components/buttons";
 @import "components/comments";
 @import "components/forms";
-@import "components/grid";
 @import "components/wp-classes";
 @import "components/navigation";
 
@@ -24,3 +24,39 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/tinymce";
+@import "layouts/projects";
+
+
+input,
+textarea{
+	padding: 1rem;
+	width: 100%;
+	border: none;
+}
+
+.wpcf7-form{
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	justify-content: center;
+
+	.form-half{
+		width: 100%;
+	}
+
+
+	.form-full,
+	.wpcf7-response-output{
+		width: 100%;
+	}
+
+	.wpcf7-response-output{
+		text-align: center;
+	}
+
+	textarea{
+		height: 200px;
+	}
+}
+
+

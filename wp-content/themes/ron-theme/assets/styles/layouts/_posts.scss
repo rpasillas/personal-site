@@ -1,0 +1,97 @@
+/**
+ *
+ * BLOGROLL PAGE
+ **/
+
+.blog{
+
+	article{
+		display: flex;
+		flex-flow: column;
+		margin-bottom: 8rem;
+
+		header{
+			display: flex;
+			flex-flow: column-reverse nowrap;
+			
+			h2{
+				margin-top: 1rem;
+				margin-bottom: .5rem;
+			}
+
+			h2 a{
+				text-decoration: none;
+				font-weight: 600;
+			}			
+		}
+
+		.entry-summary p{
+			margin-bottom: 1rem;
+		}
+		
+		.read-more-link{
+			text-transform: uppercase;
+		}
+		
+	}
+
+}
+
+
+/**
+ *
+ * BLOG SINGLE
+ **/
+.single{
+	article header{
+		margin-bottom: 4rem;
+	}
+}
+
+
+
+/**
+ *
+ * BLOG:: GLOBAL
+ **/
+.post-metas{
+	time,
+	.category{
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: .75rem;
+		letter-spacing: .25rem;
+	}
+
+	time{
+		margin-right: 1rem;
+	}
+	
+	.categories{
+		display: block;
+		
+		@include grid-media($phone-landscape){
+			display: inline;
+		}
+	}
+
+	.category{
+		color: $blue;
+		margin-right: 1rem;
+
+		@include grid-media($phone-landscape){
+			margin-left: 1rem;
+			 margin-right: 0;
+		}
+		
+	}
+
+	.bullet-separator{
+		display: none;
+
+		@include grid-media($phone-landscape){
+			display: inline;
+		}
+	}
+
+}

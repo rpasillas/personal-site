@@ -52,7 +52,7 @@ function setup() {
 
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
-  add_editor_style(Assets\asset_path('styles/main.css'));
+  //add_editor_style(Assets\asset_path('styles/editor.css'));
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
@@ -91,7 +91,9 @@ function display_sidebar() {
     // @link https://codex.wordpress.org/Conditional_Tags
     is_404(),
     is_front_page(),
-    is_page_template('template-custom.php'),
+    is_page(),
+    is_home(),
+    is_single(),
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
@@ -141,12 +143,12 @@ function projects_custom_post_type() {
       'has_archive' => 'projects',
       'capability_type' => 'post',
       'hierarchical' => false,
-      'supports' => array( 'title', 'editor', 'thumbnail', 'sticky')
+      'supports' => array( 'title', 'editor', 'thumbnail', 'sticky', 'excerpt')
     )
   );
   
   // register_taxonomy_for_object_type( 'category', 'projects' );
-  // register_taxonomy_for_object_type( 'post_tag', 'projects' );  
+  register_taxonomy_for_object_type( 'post_tag', 'projects' );  
 }
   
 add_action( 'init', __NAMESPACE__ . '\\projects_custom_post_type');
@@ -195,6 +197,20 @@ register_taxonomy( 'client_tax',
   )
 );
 
+
+add_filter('sage/wrap_base', __NAMESPACE__ . '\\sage_wrap_base_cpts'); // Add our function to the sage/wrap_base filter
+
+function sage_wrap_base_cpts($templates) {
+  $cpt = get_post_type(); // Get the current post type
+  if ($cpt && is_singular($cpt) ) {
+     array_unshift($templates, 'base-' . $cpt . '.php'); // Shift the template to the front of the array
+  }
+  return $templates; // Return our modified array with base-$cpt.php at the front of the queue
+}
+
+
+
+
 add_action( 'cmb2_admin_init',  __NAMESPACE__ . '\\project_metaboxes' );
 function project_metaboxes() {
   $prefix = 'rp_proj_';
@@ -207,16 +223,16 @@ function project_metaboxes() {
   ) );
 
   $cmb_demo->add_field( array(
-    'name' => 'Background Image',
+    'name' => 'Poster Image',
     'desc' => 'Upload an image or enter a URL.',
-    'id'   => $prefix . '_bg_image',
+    'id'   => $prefix . '_poster_image',
     'type' => 'file',
   ) );
 
   $cmb_demo->add_field( array(
-    'name' => 'Logo',
+    'name' => 'Secondary',
     'desc' => 'Upload an image or enter a URL.',
-    'id'   => $prefix . '_logo_image',
+    'id'   => $prefix . '_secondary_image',
     'type' => 'file',
   ) );
 
@@ -253,7 +269,7 @@ function project_metaboxes() {
     'name'       => 'Tools',
     'desc'       => 'Tools used on this project.',
     'id'         => $prefix . 'tools',
-    'type'       => 'text',
+    'type'       => 'textarea_small',
   ) );
 }
 
@@ -293,3 +309,18 @@ function theme_options() {
   ) );
 }
 
+function modify_read_more_link( $more ){
+  global $post;
+  return '&hellip;</p> <a href="' . get_permalink( $post->ID ) . '" class="read-more-link">Read</a>';
+}
+add_action('excerpt_more', __NAMESPACE__ . '\\modify_read_more_link');
+
+
+function excerpt_length( $length ){
+  return 20;
+}
+add_action('excerpt_length', __NAMESPACE__ . '\\excerpt_length');
+
+
+
+apply_filters('max_srcset_image_width', 3200, [3200,1000]);

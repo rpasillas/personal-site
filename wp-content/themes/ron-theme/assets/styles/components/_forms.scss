@@ -1,0 +1,30 @@
+form{
+	label{
+		font-weight: 600;
+	}
+
+	input[type="submit"]{
+		font-weight: 600;
+	}
+}
+
+#respond{
+	
+	label{
+		color: $orange;
+	}
+
+	textarea,
+	input[type="text"],
+	input[type="url"],
+	input[type="email"]{
+		border: 1px solid $orange;
+		margin: 0;
+	}
+
+	input[type="submit"]{
+		background: $orange;
+		color: #fff;
+		cursor: pointer;
+	}
+}
