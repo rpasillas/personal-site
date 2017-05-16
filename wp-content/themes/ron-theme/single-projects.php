@@ -25,7 +25,8 @@
 				  	?>
 					
 					<p><?php echo get_post_meta( get_the_ID(), 'rp_proj_role', true ); ?> on a <?php echo $tag; ?> project via <?php echo get_post_meta( get_the_ID(), 'rp_proj_via', true ); ?>.</p>
-
+					
+					<h3>At a Glance</h3>
 					<ul class="check-list">
 						<?php echo get_post_meta( get_the_ID(), 'rp_proj_tools', true ); ?>
 					</ul>

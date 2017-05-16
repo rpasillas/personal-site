@@ -1,3 +1,112 @@
 .page-header{
 	margin-bottom: 3rem;
 }
+
+.home{
+	
+	main{
+		
+		padding-top: 0;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+		align-items: flex-start;
+		align-content: flex-start;
+
+		@media (min-width: 768px){
+			padding-bottom: 6rem;
+		}
+		
+		h1{
+			flex: 100%;
+			margin-bottom: 3rem;
+
+		}
+
+		h2{
+			flex: 1 1 300px;	
+			color: $orange;
+			margin: 0;
+
+			@media (min-width: 768px){
+				 padding-left: .5rem;
+				 padding-right: 1rem;
+				 border-left: 4px solid $orange;
+			}
+		}
+
+		p{
+			flex: 2 1 300px;
+		}
+	}
+
+	.latest-projects{
+
+		.main{
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			align-content: flex-start;
+			padding: 1rem 20px 6rem;
+
+			@media (min-width: 768px){
+				padding: 0 20px 6rem;
+			}
+		}
+
+		h1{
+			flex: 1 1 300px;
+			color: $purple;
+			border-bottom: 3px solid $purple;
+
+			@media (min-width: 768px){
+				padding-left: .5rem;
+				padding-right: 1rem;
+				margin: 0;
+				border-left: 4px solid $purple;
+				border-bottom: none;
+			}
+		}
+
+		.col-wrap{
+			flex: 2 1 300px;
+		}
+	}
+
+	.latest-posts{
+
+		.main{
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			align-content: flex-start;
+			padding: 6rem 20px;
+
+			@media (min-width: 768px){
+				padding: 0 20px 6rem;
+			}
+		}
+
+		h1{
+			flex: 1 1 300px;			
+			color: $blue;
+			border-bottom: 3px solid $blue;
+			
+
+			@media (min-width: 768px){
+				padding-left: .5rem;
+				padding-right: 1rem;
+				margin: 0;
+				border-left: 4px solid $blue;
+				border-bottom: none;
+			}
+		}
+
+		.col-wrap{
+			flex: 2 1 300px;
+		}
+
+	}
+}

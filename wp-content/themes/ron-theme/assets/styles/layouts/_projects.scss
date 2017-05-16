@@ -1,197 +1,23 @@
-$mobile_img_height : 200px;
+.post-type-archive-projects,
+.home{
 
-.post-type-archive-projects{
-	
+	article.type-projects{
+		position: relative;
+		overflow: hidden;
+		margin: 0 0 3rem;
+		padding-bottom: 20px;
+		
 
-	
-	@media(max-width: 1024px){
-		article.type-projects{
-			margin: 0 0 3rem;
-			overflow: hidden;
-			min-height: 300px;
-			padding-top: $mobile_img_height;
-			padding-bottom: 12px;
-			position: relative;
+		a.image-wrap{
+			display: block;
+		}		
 
-			img{
-				height: $mobile_img_height;
-				width: auto;
-				max-width: none;
-				position: absolute;
-				z-index: 0;
-				left: 50%;
-				top: 0;
-				margin-left: -(1066px/2);
-			}
-
-			h2,
-			.entry-link-wrap{
-				position: relative;
-				z-index: 1;
-			}
-
-			h2{
-				margin-top: .5rem;
-			}
-
-			.fly-in-arrow{
-				background: $orange;
-				color: white;
-				text-decoration: none;
-				font-size: 1.15rem;
-				padding: 6px 16px;
-			}
-
-			.category{
-				display: block;
-				background: $orange;
-				text-align: center;
-				font-size: .75rem;
-				width: 180px;
-				height: 40px;
-				line-height: 40px;
-				z-index: 100;
-				position: absolute;
-				left: -40px;
-				top: 30px;
-				color: white;
-				transform: rotate(-45deg);
-			}
+		h2.entry-title{
+			margin: 0;
 		}
-	}
 
-
-	@include grid-media( $tablet-landscape  ){
-		article.type-projects{
-			position: relative;
-			height: 300px;
-			overflow: hidden;
-			background: $purple;
-			margin: 0 0 3rem;
-			display: flex;
-			flex-flow: row nowrap;
-			justify-content: flex-end;
-			align-items: center;
-			align-content: center;
-			padding-right: 50px;
-
-			&:before{
-				content: '';
-				position: absolute;
-				z-index: 10;
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-width: 0 150px 150px 0;
-				border-color: transparent white transparent transparent;
-				top: 0;
-				right: -200px;
-				transition: all .2s ease-out;
-			}
-
-			&:after{
-				content: '';
-				position: absolute;
-				z-index: 10;
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-width: 0 0 150px 150px;
-				border-color: transparent transparent white transparent;
-				bottom: 0;
-				right: -200px;
-				transition: all .2s ease-out;
-			}		
-
-			&:hover,
-			&:active,
-			&:focus{
-				&:after,
-				&:before{
-					right: 0;
-				}
-
-				h2.entry-title,
-				.entry-link-wrap{
-					transform: translateX(0);
-					opacity: 1;
-				}
-
-				img{
-					opacity: .1;
-				}
-			}
-
-			
-
-			img{
-				transition: all .2s ease-out;
-				width: auto;
-				max-width: none;
-				height: 100%;
-				position: absolute;
-				left: 50%;
-				top: 0;
-				z-index: 0;
-				margin-left: -800px
-			}
-
-
-
-			h2.entry-title,
-			.entry-link-wrap{
-				transition: all .2s ease-out;
-				position: relative;
-				z-index: 10;
-				display: block;
-				transform: translateX(-100%);
-				opacity: 0;
-				text-align: right;
-				margin: 0 0;
-			}
-
-			h2.entry-title{
-				margin-right: 20px;
-				color: white;
-			}
-
-			.entry-link-wrap a{
-				background: $blue;
-				display: block;
-				color: white;
-				text-decoration: none;
-				padding: 8px 20px;
-				font-weight: 600;
-				cursor: pointer;
-			}
-
-			.entry-link-wrap:after{
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-width: 16px 0 16px 16px;
-				border-color: transparent transparent transparent $blue;
-				content: '';
-				position: absolute;
-				right: -15px;
-				top: 0;
-			}
-
-			.category{
-				display: block;
-				background: $orange;
-				text-align: center;
-				font-size: .75rem;
-				width: 180px;
-				height: 40px;
-				line-height: 40px;
-				z-index: 100;
-				position: absolute;
-				left: -40px;
-				top: 30px;
-				color: white;
-				transform: rotate(-45deg);
-			}
+		h2.entry-title a{
+			text-decoration: none;
 		}
 	}
 
@@ -201,7 +27,8 @@ $mobile_img_height : 200px;
 .single-projects{
 	
 	main.main{
-		background: linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 29%, rgba(255,255,255,0) 30%);
+		background: linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 49%, rgba(255,255,255,0) 55%);
+		display: block;
 	}
 
 	article.type-projects{

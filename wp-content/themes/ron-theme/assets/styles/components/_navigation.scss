@@ -1,15 +1,24 @@
 
 .nav-primary{
-	//flex: 5;
-}
+	margin-top: 30px;
+
+	@include grid-media( $phone-landscape ){	
+		margin-top: 0;
+	}
+}	
 
 ul#menu-primary{
 	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
 	list-style: none;
-	padding: 0;
-	margin: 0;
+
+	@include grid-media( $phone-landscape ){	
+		flex-flow: row wrap;
+		justify-content: space-between;		
+		padding: 0;
+		margin: 0;
+	}
 
 	li{
 		padding: 10px 10px;
@@ -20,7 +29,7 @@ ul#menu-primary{
 	}
 
 	a{
-		color: $orange;
+		//color: $orange;
 		text-decoration: none;
 		text-align: center;
 		font-size: 16px;
@@ -32,22 +41,47 @@ ul#menu-primary{
 		}
 	}
 
-	a[href *= 'me'],
-	a[href *= 'plugins']{
-		color: $blue;
+	a[href *= 'me']{
+		color: white;
+
+		@include grid-media( $phone-landscape ){
+			color: $blue;
+		}
 	}
 
-	a[href *= 'mine']{
-		color: $purple;
+	a[href *= 'plugins']{
+		color: white;
+
+		@include grid-media( $phone-landscape ){
+			color: $orange;
+		}
+	}
+
+	a[href *= 'projects']{
+		color: white;
+
+		@include grid-media( $phone-landscape ){
+			color: $purple;
+		}
 	}
 
 	a[href *= 'blog']{
-		color: $dark-orange;
+		color: white;
+
+		@include grid-media( $phone-landscape ){
+			color: $dark-orange;
+		}
 	}
 	
 }
 
 .nav-secondary{
+	align-self: center;	
+
+	@include grid-media( $phone-landscape ){
+		align-self: auto; 
+	}
+
 	ul{
 		list-style: none;
 		margin: 0;
@@ -56,12 +90,18 @@ ul#menu-primary{
 
 	li{
 		display: inline;
-		margin: 0 4px;
+		margin: 0 14px;
+
+		@include grid-media( $phone-landscape ){
+			margin: 0 4px;
+		}
 	}
 }
 
 
 .posts-navigation{
+	width: 100%;
+	
 	h2.screen-reader-text{
 		//opacity: 0;
 		border-top: 1px solid $blue;
@@ -74,6 +114,7 @@ ul#menu-primary{
 
 		div{
 			flex: 0 1 160px;
+			height: 32px;
 			position: relative;
 		}
 

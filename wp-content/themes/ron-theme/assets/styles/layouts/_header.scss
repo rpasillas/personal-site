@@ -1,19 +1,20 @@
 header.banner{
-	border-top: 6px solid $orange;
+	border-top: 43px solid $orange;
 	padding-top: 20px;
 	margin-bottom: 2rem;
 	@include grid-container;
 
-	@include grid-media( $phone-landscape ){
-		border-top: 12px solid $orange;
-	}
+	// @include grid-media( $phone-landscape ){
+	// 	border-top: 12px solid $orange;
+	// }
 
-	@include grid-media( $tablet-landscape ){
-		margin-bottom: 5rem;
+	@include grid-media( $phone-landscape ){
+		border-top: 6px solid $orange;
 	}
 	
 
 	.content{	
+		justify-content: center;
 
 		@include grid-media( $phone-landscape ){
 			display: flex;
@@ -58,8 +59,98 @@ header.banner{
 
 	.navs{
 		display: flex;
-		flex-flow: column-reverse nowrap;
-		justify-content: space-between;
-		align-items: flex-end;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		align-items: flex-start;
+		left: -80vw;
+		position: fixed;
+		top: 0;
+		width: 80vw;
+		height: 100vh;
+		z-index: 200;
+		background: rgba(21,23,25,.9);
+		transition: left .3s ease-in-out;
+
+		@include grid-media( $phone-landscape ){
+			left: auto;
+			top: auto;
+			position: relative;
+			width: auto;
+			height: auto;
+			z-index: 1;
+			background: none;
+			flex-flow: column-reverse nowrap;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
+		
+	}
+
+	.navs.nav-open{		
+		left: 0;
+		
+	}
+
+	.nav-trigger.trigger-open{
+		position: absolute;
+		width: 28px;
+		height: 19px;
+		text-indent: -999999px;
+		display: block;
+		border-top: 3px solid white;
+		border-bottom: 3px solid white;
+		top: -53px;
+		left: 20px;
+
+		&:after{
+			content: '';
+			border-top: 3px solid white;
+			width: 28px;
+			height: 0;
+			top: 5px;
+			left: 0;
+			position: absolute;
+		}
+	}
+
+	.nav-trigger.trigger-close{
+		text-indent: -999999px;
+
+		&:before{
+			content: '';
+			width: 28px;
+			height: 6px;
+			background: white;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			transform: rotate(45deg);
+		}
+
+		&:after{
+			content: '';
+			width: 28px;
+			height: 6px;
+			background: white;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			transform: rotate(-45deg);
+		}
+	}
+
+	.navs .nav-trigger{
+		color: white;
+		position: absolute;
+		right: 0;
+		top: 20px;
+
+		@include grid-media( $phone-landscape ){
+			display: none;
+		}
 	}
 }
+
+
+
+

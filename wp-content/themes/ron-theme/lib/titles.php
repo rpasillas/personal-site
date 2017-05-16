@@ -15,7 +15,7 @@ function title() {
   } elseif ( is_archive() ) {
     
     if( is_post_type_archive('projects') ){
-      return 'Projects: or Ron\'s Greatest Hits';
+      return 'Projects: or Greatest Hits';
     }
     return get_the_archive_title();
 

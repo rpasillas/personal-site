@@ -6,6 +6,47 @@ form{
 	input[type="submit"]{
 		font-weight: 600;
 	}
+
+	input,textarea{
+		margin-bottom: 0;
+	}
+
+	.form-half,
+	.form-full{
+		margin-bottom: 2rem;
+	}
+
+	.form-half-left{
+		padding-right: 0;
+
+		@media (min-width: 500px){
+			padding-right: 1rem;
+		}
+	}
+
+	.form-half-right{
+		padding-left: 0;
+
+		@media (min-width: 500px){
+			padding-left: 1rem;
+		}
+	}
+
+	.form-half{
+		flex: 1 1 100%;
+
+		@media (min-width: 500px){
+			flex: 1 1 50%;
+		}
+	}
+
+	.wpcf7-recaptcha{
+		transform: scale(.9);
+
+		@media (min-width: 340px){
+			transform: scale(1);
+		}
+	}
 }
 
 #respond{
@@ -28,3 +69,54 @@ form{
 		cursor: pointer;
 	}
 }
+
+/**
+ * CONTACT FORM 7 RESPONSES
+ **/
+div.wpcf7-response-output{
+	color: white;
+	margin: 0;
+	font-style: italic;
+	border: none;
+	padding: .5rem 1rem;
+	font-size: 1rem;
+	line-height: 1;
+}
+
+span.wpcf7-not-valid-tip,
+div.wpcf7-validation-errors{
+	background: #e65d5d;
+}
+
+div.wpcf7-mail-sent-ok{
+	background: #62b962;
+}
+
+
+.search-form{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: stretch;
+	align-items: stretch;
+
+	label{
+		flex: 3;
+		margin:0;
+
+		input{
+			background: #f7f7f7;
+			height: 100%;
+			color: $black;
+			border-top: 1px solid #bdbdbd;
+			border-left: 1px solid #bdbdbd;
+			border-bottom: 1px solid #bdbdbd;
+		}
+	}
+
+	input{
+		flex: 1;
+		background: $blue;
+		color: white;
+	}
+}
+

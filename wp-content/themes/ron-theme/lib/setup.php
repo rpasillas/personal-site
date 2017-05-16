@@ -61,8 +61,8 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  */
 function widgets_init() {
   register_sidebar([
-    'name'          => __('Primary', 'sage'),
-    'id'            => 'sidebar-primary',
+    'name'          => __('Footer Left', 'sage'),
+    'id'            => 'sidebar-footer-1',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
     'before_title'  => '<h3>',
@@ -70,8 +70,8 @@ function widgets_init() {
   ]);
 
   register_sidebar([
-    'name'          => __('Footer', 'sage'),
-    'id'            => 'sidebar-footer',
+    'name'          => __('Footer Right', 'sage'),
+    'id'            => 'sidebar-footer-3',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
     'before_title'  => '<h3>',
@@ -198,13 +198,22 @@ register_taxonomy( 'client_tax',
 );
 
 
-add_filter('sage/wrap_base', __NAMESPACE__ . '\\sage_wrap_base_cpts'); // Add our function to the sage/wrap_base filter
-
-function sage_wrap_base_cpts($templates) {
+/**
+ * DIFFERENT BASE FILE FOR
+ * HOME & PROJECTS CPT
+ **/
+add_filter('sage/wrap_base', __NAMESPACE__ . '\\sage_wrap_custom_base'); 
+function sage_wrap_custom_base($templates) {
+ 
   $cpt = get_post_type(); // Get the current post type
   if ($cpt && is_singular($cpt) ) {
      array_unshift($templates, 'base-' . $cpt . '.php'); // Shift the template to the front of the array
   }
+
+  if( is_front_page() ){
+    array_unshift($templates, 'base-home.php');
+  }
+
   return $templates; // Return our modified array with base-$cpt.php at the front of the queue
 }
 
@@ -323,4 +332,20 @@ add_action('excerpt_length', __NAMESPACE__ . '\\excerpt_length');
 
 
 
-apply_filters('max_srcset_image_width', 3200, [3200,1000]);
+//apply_filters('max_srcset_image_width', 3200, [3200,1000]);
+
+
+
+
+function do_ga_analytics(){
+   echo "<script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-26659910-1', 'auto');
+          ga('send', 'pageview');
+        </script>";
+}
+add_action('wp_head', __NAMESPACE__ . '\\do_ga_analytics');
