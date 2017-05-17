@@ -148,7 +148,7 @@ function projects_custom_post_type() {
   );
   
   // register_taxonomy_for_object_type( 'category', 'projects' );
-  register_taxonomy_for_object_type( 'post_tag', 'projects' );  
+  // register_taxonomy_for_object_type( 'post_tag', 'projects' );  
 }
   
 add_action( 'init', __NAMESPACE__ . '\\projects_custom_post_type');
@@ -197,6 +197,50 @@ register_taxonomy( 'client_tax',
   )
 );
 
+register_taxonomy( 'tools_tax', 
+  array('projects'), 
+  array('hierarchical' => true,
+    'labels' => array(
+      'name' => 'Tools',
+      'singular_name' => 'Tool',
+      'search_items' =>  'Search Tools',
+      'all_items' => 'All Tools',
+      'parent_item' => 'Parent Tool',
+      'parent_item_colon' => 'Parent Tool:',
+      'edit_item' => 'Edit Tool',
+      'update_item' => 'Update Tool',
+      'add_new_item' => 'Add New Tool',
+      'new_item_name' => 'New Tool Name'
+    ),
+    'show_admin_column' => true, 
+    'show_ui' => true,
+    'query_var' => true,
+   // 'rewrite' => array( 'slug' => 'custom-slug' ),
+  )
+);
+
+register_taxonomy( 'project_type_tax', 
+  array('projects'), 
+  array('hierarchical' => true,
+    'labels' => array(
+      'name' => 'Project Types',
+      'singular_name' => 'Project Type',
+      'search_items' =>  'Search Project Types',
+      'all_items' => 'All Project Types',
+      'parent_item' => 'Parent Project Type',
+      'parent_item_colon' => 'Parent Project Type:',
+      'edit_item' => 'Edit Project Type',
+      'update_item' => 'Update Project Type',
+      'add_new_item' => 'Add New Project Type',
+      'new_item_name' => 'New Project Type Name'
+    ),
+    'show_admin_column' => true, 
+    'show_ui' => true,
+    'query_var' => true,
+   // 'rewrite' => array( 'slug' => 'custom-slug' ),
+  )
+);
+
 
 /**
  * DIFFERENT BASE FILE FOR
@@ -232,19 +276,32 @@ function project_metaboxes() {
   ) );
 
   $cmb_demo->add_field( array(
-    'name' => 'Poster Image',
+    'name' => 'Laptop Image',
     'desc' => 'Upload an image or enter a URL.',
-    'id'   => $prefix . '_poster_image',
+    'id'   => $prefix . 'laptop_image',
     'type' => 'file',
   ) );
 
   $cmb_demo->add_field( array(
-    'name' => 'Secondary',
+    'name' => 'Tablet Image',
     'desc' => 'Upload an image or enter a URL.',
-    'id'   => $prefix . '_secondary_image',
+    'id'   => $prefix . 'tablet_image',
     'type' => 'file',
   ) );
 
+  $cmb_demo->add_field( array(
+    'name' => 'Phone Image',
+    'desc' => 'Upload an image or enter a URL.',
+    'id'   => $prefix . 'phone_image',
+    'type' => 'file',
+  ) );
+
+  $cmb_demo->add_field( array(
+    'name' => 'Background Image',
+    'desc' => 'Upload an image or enter a URL.',
+    'id'   => $prefix . 'bg_image',
+    'type' => 'file',
+  ) );
 
   $cmb_demo->add_field( array(
     'name'       => 'Project Link',
@@ -261,10 +318,19 @@ function project_metaboxes() {
   ) );
   
   $cmb_demo->add_field( array(
-    'name'       => 'Via',
-    'desc'       => 'Typically the agency name the work was done through.',
-    'id'         => $prefix . 'via',
-    'type'       => 'text',
+    'name'            => 'Client',
+    'desc'            => 'Typically the agency name the work was done through.',
+    'id'              => $prefix . 'client',
+    'taxonomy'        => 'client_tax',
+    'type'            => 'taxonomy_select',
+    'remove_default'  => 'true',
+  ) );
+
+  $cmb_demo->add_field( array(
+    'name'       => 'Agency Work',
+    'desc'       => 'Was it an agency?',
+    'id'         => $prefix . 'agency',
+    'type'       => 'checkbox',
   ) );
 
   $cmb_demo->add_field( array(
@@ -272,13 +338,6 @@ function project_metaboxes() {
     'desc'       => 'The role I performed on this project.',
     'id'         => $prefix . 'role',
     'type'       => 'text',
-  ) );
-  
-  $cmb_demo->add_field( array(
-    'name'       => 'Tools',
-    'desc'       => 'Tools used on this project.',
-    'id'         => $prefix . 'tools',
-    'type'       => 'textarea_small',
   ) );
 }
 

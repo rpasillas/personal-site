@@ -10,6 +10,8 @@
 
 		a.image-wrap{
 			display: block;
+			background-size: cover;
+			padding: 3rem;
 		}		
 
 		h2.entry-title{
@@ -24,63 +26,62 @@
 }
 
 
-.single-projects{
+.single.single-projects{
 	
 	main.main{
-		background: linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 49%, rgba(255,255,255,0) 55%);
+		background: white;
 		display: block;
 	}
 
 	article.type-projects{
 		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-		align-items: flex-start;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		align-items: center;
 		
-		.left{
-			flex: 1 1 270px;
-			padding-right: 25px;
+		h1{
+			flex: 1;
 		}
 
-		.right{
-			flex: 1 1 270px;
-			padding-top: .67em;
-			padding-left: 25px;
-
-			img{
-				width: 250px;
-				margin: 0 auto;
-				display: block;
-
-				@media(min-width:1036px){
-					width: 100%;
-				}
-			}
+		p{
+			flex: 1;
 		}
 
 		ul.check-list{
-			padding: 2rem;
-			margin: 0 2rem;
-			background: white;
+			flex: 1;
+			list-style: none;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: center;
+			align-items: center;
+		}
+
+		ul.check-list li{
+			padding: 0 1rem;
+			font-weight: 600;
+			color: #8a8a8a;
 		}
 	}
 
 	.project-secondary{
-		background: $blue;
+		background-color: $blue;
+		background-position: 50% 0;
+		background-repeat: no-repeat;
+		background-size: 100% auto;
 		color: white;
 		position: relative;
-		padding-bottom: 100px;
+		text-align: center;
+		padding-top: 3rem;
 
 		&:before{
 			content: '';
 			width: 100%;
-			height: 150px; //400
+			height: 80px;
 			left: 0;
-			top: -150px;
+			top: -80px;
 			background: $blue;
 			position: absolute;
 			z-index: -1;
-
 		}
 
 		h2{
@@ -91,64 +92,58 @@
 		.site-link{
 			color: white;
 		}
+
+		.project-images{
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: center;
+			align-items: flex-end;
+			padding-top: 100px;
+			position: relative;
+			z-index: 10;
+		}
+
+		.project-image{
+			margin: 0 auto;
+		}
+
+		.project-image.image-laptop{
+			flex: 0 1 (1295px/2);
+		}
+
+		.project-image.image-tablet{
+			flex: 0 1 (503px/2);
+		}
+
+		.project-image.image-phone{
+			flex: 0 1 (212px/2);
+		}
 	}
 
 	.project-footer{
 		background: $purple;
 		color: white;	
-		position: relative;	
+		position: relative;
+		padding-bottom: 3rem;
 
 		&:before{
 			content: '';
 			width: 100%;
-			height: 70px;
+			height: 100px;
 			left: 0;
-			top: 0;
-			background: $blue;
+			top: -100px;
+			background: $purple;
 			position: absolute;
 			z-index: 0;
-
-			@media(min-width:1036px){
-				height: 200px;
-			}
 		}
 
 		.main{
 			display: flex;
 			flex-flow: row wrap;
-			justify-content: flex-end;
-			align-items: flex-start;
+			justify-content: flex-start;
+			align-items: center;
 			position: relative;
 			z-index: 1;
-		}
-
-		.secondary-image{
-			flex: 0 1 100%;
-			padding: 0 30px;
-
-			@media(min-width:1036px){
-				flex: 0 1 66%;
-			}
-		}
-
-		.secondary-image img{
-			margin: 0 auto -2px;
-			width: 250px;
-			display: block;
-
-			@media(min-width:1036px){
-				width: 100%;
-			}
-		}
-
-		.learn-more{
-			position: absolute;
-			left: 0;
-			top: 30%;
-
-			@media(min-width:1036px){
-				top: 50%;
-			}
 		}
 
 		.learn-more span{
